@@ -2,7 +2,7 @@ const path = require('path');
 const express= require('express')
 const dotenv = require('dotenv');
 
-const app= express()
+
 const connectDB = require('./config/db');
 const profileroutes = require('./routes/api/profile')
 const authroutes= require('./routes/api/auth')
@@ -13,8 +13,14 @@ const usersroutes = require('./routes/api/users')
 dotenv.config({ path: './config/config.env' });
 
 // Connect to database
-connectDB();
 
+connectDB();
+const app = express()
+
+
+//Bosy parser- To read the data from the user:
+
+app.use(express.json());
 // Mouting the users:
 
 app.use('/api/profile/', profileroutes)
